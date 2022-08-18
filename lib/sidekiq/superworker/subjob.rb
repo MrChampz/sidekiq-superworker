@@ -72,7 +72,7 @@ module Sidekiq
         def transaction(&block)
           result = nil
           Sidekiq.redis do |conn|
-            conn.multi do
+            conn.multi do |pipeline|
               result = yield(conn)
             end
           end
