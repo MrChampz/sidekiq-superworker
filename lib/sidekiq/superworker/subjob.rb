@@ -73,7 +73,7 @@ module Sidekiq
           result = nil
           Sidekiq.redis do |conn|
             conn.multi do |pipeline|
-              result = yield(conn)
+              result = yield(pipeline)
             end
           end
           result
